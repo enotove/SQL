@@ -1,0 +1,6 @@
+create table if not exists department(id SERIAL primary key, name_department VARCHAR(60) not null unique);
+
+create table if not exists chief(id SERIAL primary key, department integer references department(id), name_chief VARCHAR(60) not null);
+
+create table if not exists employee(id SERIAL primary key, chief_of_emloyee integer references chief(id),
+name_employee VARCHAR(60) not null);
