@@ -1,0 +1,12 @@
+create table if not exists genres(id SERIAL primary key, name_genre VARCHAR(60) not null unique);
+
+create table if not exists musicians(id SERIAL primary key, name_musician VARCHAR(100) not null, 
+albums VARCHAR(100) not null, released DATE not null);
+
+create table if not exists musiciansGenre(name_musician integer  REFERENCES musicians(id), genre integer REFERENCES genres(id)
+, constrains pk primary key (name_musician, genre);
+
+create table if not exists albums(id SERIAL primary key, name_album integer references musicians(id), name_track VARCHAR(100) not null, 
+timeline TIME not null);
+
+create table if not exists collections(id SERIAL primary key, name_collections VARCHAR(100) not null, name_track integer references albums(id));
